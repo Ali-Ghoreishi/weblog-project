@@ -1,4 +1,4 @@
-const bcrypt = require("bcryptjs");
+// const bcrypt = require("bcryptjs");
 const passport = require('passport');
 
 const User = require("../models/User");
@@ -58,11 +58,16 @@ exports.createUser = async (req, res) => {
       });
     }
 
-    const hash = await bcrypt.hash(password, 10);
+    // const hash = await bcrypt.hash(password, 10);
+    // await User.create({
+    //   fullname: fullname,
+    //   email: email,
+    //   password: hash,
+    // });
     await User.create({
       fullname: fullname,
       email: email,
-      password: hash,
+      password
     });
     req.flash("success_msg", "ثبت نام موفقیت امیز بود");
     res.redirect("/users/login");
